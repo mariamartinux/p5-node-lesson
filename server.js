@@ -20,5 +20,13 @@ let io = serverSocket(server);
 io.on("connection", newConnection);
 
 function newConnection(newSocket) {
+  //things that happen in relation to clients
   console.log(newSocket.id); //every time a client connects it prints the number of the conncetion
+  newSocket.on("mouse", mouseMessage);
+
+  function mouseMessage(dataReceived) {
+    console.log(dataReceived);
+
+    newSocket.broadcast.emit("mouseBroadcast", dataReceived); // broadcast = sending message to all the other clients apart the one were usinf
+  }
 }
