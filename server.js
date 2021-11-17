@@ -5,7 +5,7 @@ let express = require("express"); //loading express library in express variable.
 
 let app = express(); //app is the result of running express. this is to activate expr
 
-let port = 3000;
+let port = process.env.PORT || 3000;
 
 let server = app.listen(port); //running instance of our server
 
